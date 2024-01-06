@@ -1,0 +1,9 @@
+<div *ngIf="loaded" class="card m-5">
+    <div class="card-body">
+        <div class="card-title"><h5>{{ pokemon?.name }}</h5></div>
+        <div class="card-body">
+            <img [src]="pokemon?.image">
+            <p>Type: {{pokemon?.type}}</p>
+        </div>
+    </div>
+</div>

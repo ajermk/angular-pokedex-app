@@ -1,0 +1,10 @@
+
+<div *ngIf="loaded">
+  <div class="card m-3" *ngFor="let pokemon of pokemonList">
+    <div class="card-body">
+      <h5 class="card-title">#{{ pokemon.id}} - {{ pokemon.name }}</h5>
+      <img [src]="pokemon.image">
+      <p></p>
+    </div>
+  </div>
+</div>
