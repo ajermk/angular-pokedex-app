@@ -20,21 +20,21 @@ export class PokemonService {
     );
   }
 
-  getPokemonAll(offset: number): Observable<Pokemon[]> {
-    return this.performPaginatedCall(offset);
+  getPokemonAll(offset: number, pokemonPerPage: number): Observable<Pokemon[]> {
+    return this.performPaginatedCall(offset, pokemonPerPage);
   }
 
-  getPokemonImages(pokemonList: Pokemon[]) {
+  getPokemonImages(pokemonList: Pokemon[], offset: number) {
     let observables = [];
-    for(let i = 1; i <= pokemonList.length; i++) {
+    for(let i = offset; i < offset+pokemonList.length; i++) {
       observables.push(this.getPokemon(i));
     }
 
     return observables;
   }
 
-  private performPaginatedCall(offset: number) {
-    const pokeUrlWithPagination: string = this.pokeUrl + `/?offset=${offset}&limit=5`;
+  private performPaginatedCall(offset: number, pokemonPerPage: number) {
+    const pokeUrlWithPagination: string = this.pokeUrl + `/?offset=${offset}&limit=${pokemonPerPage}}`;
     console.log(pokeUrlWithPagination)
     return this.http.get<Pokemon[]>(pokeUrlWithPagination).pipe(
       map((data: any) => this.performPokemonListDeserialization(data)),
@@ -55,11 +55,14 @@ export class PokemonService {
   }
 
   private performPokemonDeserialization(data: any): Pokemon {
+    console.log(data);
     const pokemon: Pokemon = {
         id: data.id,
         name: data.name,
         type: data.types[0].type.name,
-        image: data.sprites.front_default
+        imageIcon: data.sprites.front_default,
+        imageIconAnimated: data.sprites.versions['generation-v']['black-white'].animated.front_default,
+        image: data.sprites.other['official-artwork'].front_default
       };
     return pokemon;
   }

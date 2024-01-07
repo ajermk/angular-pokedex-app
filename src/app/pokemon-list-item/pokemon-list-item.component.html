@@ -2,9 +2,13 @@
 <div *ngIf="loaded">
   <div class="card m-3" *ngFor="let pokemon of pokemonList">
     <div class="card-body">
-      <h5 class="card-title">#{{ pokemon.id}} - {{ pokemon.name }}</h5>
-      <img [src]="pokemon.image">
+      <h5 class="card-title">
+        <img [src]="pokemon.imageIcon">#{{ pokemon.id}} - {{ pokemon.name }}</h5>
       <p></p>
     </div>
   </div>
+  <button *ngIf="!offsetIsZero" class="btn">Back</button>
+  <button class="btn">
+    <a [routerLink]="['pokemon']" [queryParams]="{offset: offset+20}" (click)="onClickNextButton()">Next</a>
+  </button>
 </div>
