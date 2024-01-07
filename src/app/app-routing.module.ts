@@ -4,8 +4,8 @@ import { PokemonDetailComponent } from './pokemon-detail/pokemon-detail.componen
 import { PokemonListItemComponent } from './pokemon-list-item/pokemon-list-item.component';
 
 export const routes: Routes = [
-  { path: 'pokemon/:id', component: PokemonDetailComponent },
-  { path: 'pokemon', component: PokemonListItemComponent, },
+  { path: 'pokemon/:id', component: PokemonDetailComponent, },
+  { path: 'pokemon', component: PokemonListItemComponent},
   { path: '', redirectTo: 'pokemon', pathMatch: 'full' },
 ];
 

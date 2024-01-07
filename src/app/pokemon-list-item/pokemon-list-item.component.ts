@@ -30,6 +30,14 @@ export class PokemonListItemComponent implements OnInit, OnDestroy {
         this.offset = Number(pathOffset);
       }
 
+      if (this.offset <= 0) {
+        this.offset = 1;
+      } 
+    
+      if (this.offset > 1016) {
+        this.offset = 1016;
+      }
+
       console.log('Query params ', this.offset);
       this.retrievePokemonListFromService();
     });
@@ -42,6 +50,13 @@ export class PokemonListItemComponent implements OnInit, OnDestroy {
   onClickNextButton() {
     this.router.navigate(['./'], {
       queryParams: {offset: this.offset+this.pokemonPerPage},
+      relativeTo: this.route
+    });
+  }
+
+  onClickBackButton() {
+    this.router.navigate(['./'], {
+      queryParams: {offset: this.offset-this.pokemonPerPage},
       relativeTo: this.route
     });
   }

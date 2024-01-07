@@ -1,9 +1,14 @@
 <div *ngIf="loaded" class="card m-5">
     <div class="card-body">
-        <div class="card-title"><h5>{{ pokemon?.name }}</h5></div>
+        <div class="card-title"><h1>{{ pokemon?.name | uppercase }}</h1> </div>
         <div class="card-body">
             <img [src]="pokemon?.image">
             <p>Type: {{pokemon?.type}}</p>
         </div>
     </div>
 </div>
+<button class='ms-5 btn btn-outline-dark'
+style='width:80px'
+(click)='onBack()'>
+Back
+</button>

@@ -3,12 +3,17 @@
   <div class="card m-3" *ngFor="let pokemon of pokemonList">
     <div class="card-body">
       <h5 class="card-title">
-        <img [src]="pokemon.imageIcon">#{{ pokemon.id}} - {{ pokemon.name }}</h5>
+        <a class="link-underline link-underline-opacity-0" [routerLink]="['/pokemon', pokemon.id]">
+          <img id="myImage" [src]="pokemon.imageIcon">#{{ pokemon.id}} - {{ pokemon.name }}
+        </a>
+      </h5>
       <p></p>
     </div>
   </div>
-  <button *ngIf="!offsetIsZero" class="btn">Back</button>
-  <button class="btn">
-    <a [routerLink]="['pokemon']" [queryParams]="{offset: offset+20}" (click)="onClickNextButton()">Next</a>
+  <button *ngIf="offset > 1" class="btn m-3 btn-outline-dark">
+    <a [routerLink]="['pokemon']" (click)="onClickBackButton()">Back</a>
+  </button>
+  <button class="btn m-3 btn-outline-dark">
+    <a [routerLink]="['pokemon']" (click)="onClickNextButton()">Next</a>
   </button>
 </div>

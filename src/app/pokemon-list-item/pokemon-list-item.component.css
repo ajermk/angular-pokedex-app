@@ -1,4 +1,4 @@
-/* #myImage:hover{
+#myImage:hover{
     animation: mover 0.22s infinite;
     animation-timing-function: step-end; 
 }
@@ -6,4 +6,11 @@
 @keyframes mover {
     0% { transform: translateY(0px) }
     50% { transform: translateY(-5px) }
-} */
+}
+a {
+    color:black;
+}
+
+a:hover {
+    color:blue;
+}
